@@ -92,11 +92,6 @@ button {
   cursor: pointer;
 }
 
-/* The Hebrew button always sits to the right of the English one */
-html[dir='ltr'] .language-toggle {
-  flex-direction: row-reverse;
-}
-
 .flag {
   border: 1px solid var(--greige);
   border-radius: 2px;
@@ -194,8 +189,10 @@ html[dir='ltr'] .language-toggle {
   color: var(--stone-gray);
 }
 
-.viewer.is-error p {
-  font-weight: 600;
+.viewer.is-error h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 /* Copy result toast: fixed to the bottom of the window, on the prompt buttons side
@@ -245,6 +242,12 @@ html[dir='ltr'] .language-toggle {
   --toast-duration: 5s;
   background: var(--light-gray);
   border-color: var(--charcoal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
 }
 
 @keyframes toast-in {
@@ -299,7 +302,8 @@ html[dir='ltr'] .language-toggle {
 /* Rendered Markdown */
 .markdown {
   line-height: 1.7;
-  overflow-wrap: break-word;
+  /* Long words, URLs and table cells wrap instead of widening the page */
+  overflow-wrap: anywhere;
 }
 
 .markdown > :first-child {
@@ -373,6 +377,7 @@ html[dir='ltr'] .language-toggle {
 
 .markdown table {
   width: 100%;
+  table-layout: fixed;
   border-collapse: collapse;
 }
 

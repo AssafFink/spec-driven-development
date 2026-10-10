@@ -17,28 +17,29 @@ interface Props {
 export function PromptViewer({ strings, source }: Props) {
   if (source === null) {
     return (
-      <section className="viewer is-message">
+      <section className="viewer is-message" aria-label={strings.viewerLabel}>
         <p>{strings.hint}</p>
       </section>
     )
   }
   if (source.status === 'loading') {
     return (
-      <section className="viewer is-message" aria-live="polite">
+      <section className="viewer is-message" aria-label={strings.viewerLabel} aria-live="polite">
         <p>{strings.loading}</p>
       </section>
     )
   }
   if (source.status === 'error') {
     return (
-      <section className="viewer is-message is-error" role="alert">
+      <section className="viewer is-message is-error" aria-label={strings.viewerLabel} role="alert">
         <AlertIcon size={40} />
+        <h2>{strings.loadErrorTitle}</h2>
         <p>{strings.loadError}</p>
       </section>
     )
   }
   return (
-    <section className="viewer">
+    <section className="viewer" aria-label={strings.viewerLabel}>
       <div className="markdown">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{source.text}</ReactMarkdown>
       </div>
