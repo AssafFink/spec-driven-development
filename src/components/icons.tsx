@@ -61,9 +61,18 @@ export function UsFlag() {
   )
 }
 
-export function AlertIcon() {
+export function CheckIcon() {
   return (
-    <svg {...svgProps} width={40} height={40}>
+    <svg {...svgProps}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="m8 12.5 2.5 2.5 5.5-6" />
+    </svg>
+  )
+}
+
+export function AlertIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg {...svgProps} width={size} height={size}>
       <circle cx="12" cy="12" r="9" />
       <path d="M12 7.5v5.5M12 16.5h.01" />
     </svg>

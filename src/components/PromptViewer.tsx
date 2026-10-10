@@ -32,14 +32,20 @@ export function PromptViewer({ strings, source }: Props) {
   if (source.status === 'error') {
     return (
       <section className="viewer is-message is-error" role="alert">
-        <AlertIcon />
+        <AlertIcon size={40} />
         <p>{strings.loadError}</p>
       </section>
     )
   }
   return (
-    <section className="viewer markdown">
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{source.text}</ReactMarkdown>
+    <section className="viewer">
+      <div className="markdown">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{source.text}</ReactMarkdown>
+      </div>
+      <div className="source">
+        <label htmlFor="prompt-source">{strings.sourceLabel}</label>
+        <textarea id="prompt-source" readOnly spellCheck={false} value={source.text} />
+      </div>
     </section>
   )
 }
