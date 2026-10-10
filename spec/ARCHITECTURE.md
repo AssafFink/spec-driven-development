@@ -1,4 +1,4 @@
-# ARCHITECTURE — Spec-Driven Development Prompts
+# ARCHITECTURE — Spec-Driven Development Prompter
 
 > מסמך ארכיטקטורה טכנית המבוסס על PRD(4).md. תאריך בדיקת מקורות: 10 באוקטובר 2026.
 

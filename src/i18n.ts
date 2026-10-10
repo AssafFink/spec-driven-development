@@ -16,7 +16,7 @@ export interface UiStrings {
 
 export const STRINGS: Record<Language, UiStrings> = {
   he: {
-    title: 'פרומפטים עבור פיתוח מונחה מפרט',
+    title: 'פרומפטר לפיתוח מונחה מפרט',
     hint: 'בחר פרומפט מהרשימה כדי להציג ולהעתיק אותו.',
     loading: 'טוען…',
     loadErrorTitle: 'שגיאה',
@@ -30,7 +30,7 @@ export const STRINGS: Record<Language, UiStrings> = {
     languageLabel: 'בחירת שפה',
   },
   en: {
-    title: 'Spec-Driven Development Prompts',
+    title: 'Spec-Driven Development Prompter',
     hint: 'Select a prompt from the list to view and copy it.',
     loading: 'Loading…',
     loadErrorTitle: 'Error',
