@@ -16,6 +16,8 @@
   --space-2: 16px;
   --space-3: 24px;
   --space-4: 32px;
+  /* Width of the prompt buttons column; the toast uses the same width */
+  --list-width: 260px;
 }
 
 *,
@@ -37,6 +39,11 @@ body {
     linear-gradient(to right, #d1cbc240 1px, transparent 1px),
     linear-gradient(to bottom, #d1cbc240 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+/* Inter leads in English, Heebo in Hebrew (spec/DESIGN.md 2.2) */
+:lang(en) body {
+  font-family: Inter, Heebo, system-ui, sans-serif;
 }
 
 button {
@@ -85,6 +92,11 @@ button {
   cursor: pointer;
 }
 
+/* The Hebrew button always sits to the right of the English one */
+html[dir='ltr'] .language-toggle {
+  flex-direction: row-reverse;
+}
+
 .flag {
   border: 1px solid var(--greige);
   border-radius: 2px;
@@ -95,9 +107,8 @@ button {
   border-color: var(--technical-green);
 }
 
-.language-button:disabled {
-  opacity: 0.55;
-  cursor: default;
+.language-button:not(.is-active):hover {
+  background: var(--light-gray);
 }
 
 /* Two columns: prompt list first (right side in RTL), viewer second */
@@ -111,7 +122,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
-  flex: 0 0 260px;
+  flex: 0 0 var(--list-width);
 }
 
 .prompt-button {
@@ -205,7 +216,8 @@ button {
   display: flex;
   align-items: flex-start;
   gap: var(--space-1);
-  max-width: 340px;
+  /* Same width as the buttons column so it never covers the prompt; grows in height */
+  width: var(--list-width);
   padding: 12px var(--space-2);
   border: 1px solid;
   border-radius: var(--radius);

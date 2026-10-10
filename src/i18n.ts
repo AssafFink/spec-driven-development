@@ -25,4 +25,16 @@ export const STRINGS: Record<Language, UiStrings> = {
     promptListLabel: 'רשימת הפרומפטים',
     languageLabel: 'בחירת שפה',
   },
+  en: {
+    title: 'Spec-Driven Development Prompts',
+    hint: 'Select a prompt from the list to view and copy it.',
+    loading: 'Loading…',
+    loadError: 'Prompt file could not be loaded.',
+    copySuccess: 'Prompt copied to Clipboard successfully',
+    copyFailure:
+      'Automatic copy failed. Select the text in the source box at the bottom of the panel and copy it manually (Ctrl+C).',
+    sourceLabel: 'Markdown source for manual copy',
+    promptListLabel: 'Prompt list',
+    languageLabel: 'Language',
+  },
 }

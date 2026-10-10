@@ -1,5 +1,5 @@
-// English ('en') is added in Milestone 3.
-export type Language = 'he'
+export const LANGUAGES = ['he', 'en'] as const
+export type Language = (typeof LANGUAGES)[number]
 
 export const PROMPTS = [
   { id: 'PRD.md', kind: 'doc', file: 'prd-prompt.md' },

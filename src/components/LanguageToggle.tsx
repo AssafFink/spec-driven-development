@@ -1,17 +1,32 @@
+import type { Language } from '../catalog'
 import { IsraelFlag, UsFlag } from './icons'
 
 interface Props {
   label: string
+  language: Language
+  onChange: (language: Language) => void
 }
 
-// Language switching is implemented in Milestone 3; until then English is shown but disabled.
-export function LanguageToggle({ label }: Props) {
+// The two captions and their order never change; only the highlight moves.
+export function LanguageToggle({ label, language, onChange }: Props) {
   return (
     <div className="language-toggle" role="group" aria-label={label}>
-      <button type="button" className="language-button is-active" aria-pressed="true" lang="he">
+      <button
+        type="button"
+        className={language === 'he' ? 'language-button is-active' : 'language-button'}
+        aria-pressed={language === 'he'}
+        lang="he"
+        onClick={() => onChange('he')}
+      >
         <IsraelFlag /> עברית
       </button>
-      <button type="button" className="language-button" aria-pressed="false" lang="en" disabled>
+      <button
+        type="button"
+        className={language === 'en' ? 'language-button is-active' : 'language-button'}
+        aria-pressed={language === 'en'}
+        lang="en"
+        onClick={() => onChange('en')}
+      >
         <UsFlag /> English
       </button>
     </div>
