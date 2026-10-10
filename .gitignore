@@ -1,0 +1,83 @@
+# --- Secrets & environment ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- Dependencies ---
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# --- Build output ---
+dist/
+build/
+out/
+.next/
+.nuxt/
+.svelte-kit/
+*.tsbuildinfo
+
+# --- Hosting & backend services ---
+.vercel/
+supabase/.temp/
+
+# --- Mobile ---
+.expo/
+.gradle/
+.dart_tool/
+Pods/
+*.apk
+*.aab
+*.ipa
+
+# --- Caches ---
+.cache/
+.parcel-cache/
+.turbo/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.eslintcache
+
+# --- Tests & coverage ---
+coverage/
+.nyc_output/
+htmlcov/
+.coverage
+playwright-report/
+test-results/
+
+# --- Logs ---
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# --- Local databases ---
+*.sqlite
+*.sqlite3
+*.db
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Editors / IDEs ---
+.idea/
+.vscode/
+.obsidian/
+*.swp
+
+# --- Claude Code (local only) ---
+.claude/settings.local.json
+
+# --- Temp ---
+tmp/
+temp/
+*.tmp
