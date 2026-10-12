@@ -13,7 +13,7 @@ type Sources = Record<Language, Partial<Record<PromptId, PromptSource>>>
 
 // Keep in sync with --toast-duration in styles.css.
 // The failure message is longer and explains what to do, so it stays longer.
-const TOAST_DURATION_MS = { success: 2000, failure: 5000 }
+const TOAST_DURATION_MS = { success: 3000, failure: 5000 }
 
 export default function App() {
   const [language, setLanguage] = useState<Language>(readStoredLanguage)
@@ -24,6 +24,7 @@ export default function App() {
   const attemptRef = useRef(0)
   // Prompt that was clicked before its file finished loading.
   const pendingCopyRef = useRef<PromptId | null>(null)
+  const viewerRef = useRef<HTMLElement | null>(null)
   const strings = STRINGS[language]
 
   // Preload every prompt in both languages so a click can copy the text right away.
@@ -57,6 +58,8 @@ export default function App() {
 
   function handleSelect(id: PromptId) {
     setSelectedId(id)
+    // Back to the start of the prompt, also when the same prompt is clicked again.
+    viewerRef.current?.scrollTo(0, 0)
     window.scrollTo(0, 0)
     setCopyStatus('idle')
     const attempt = ++attemptRef.current
@@ -116,7 +119,13 @@ export default function App() {
       </header>
       <main className="columns">
         <PromptList label={strings.promptListLabel} selectedId={selectedId} onSelect={handleSelect} />
-        <PromptViewer strings={strings} source={source} />
+        {/* The key resets the viewer, hiding the Markdown source again for every new prompt. */}
+        <PromptViewer
+          key={`${language}:${selectedId}`}
+          strings={strings}
+          source={source}
+          scrollRef={viewerRef}
+        />
       </main>
       <CopyToast strings={strings} status={copyStatus} />
     </div>

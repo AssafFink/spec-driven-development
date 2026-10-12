@@ -23,7 +23,7 @@ export const STRINGS: Record<Language, UiStrings> = {
     loadError: 'לא ניתן לטעון את קובץ הפרומפט.',
     copySuccess: 'הפרומפט הועתק בהצלחה ל-Clipboard',
     copyFailure:
-      'ההעתקה האוטומטית נכשלה. אפשר לסמן את הטקסט בתיבת המקור שבתחתית האזור ולהעתיק ידנית (Ctrl+C).',
+      'ההעתקה האוטומטית נכשלה. לחץ על „מקור Markdown להעתקה ידנית” בתחתית האזור, סמן את הטקסט והעתק ידנית (Ctrl+C).',
     sourceLabel: 'מקור Markdown להעתקה ידנית',
     promptListLabel: 'רשימת הפרומפטים',
     viewerLabel: 'תצוגת הפרומפט',
@@ -37,7 +37,7 @@ export const STRINGS: Record<Language, UiStrings> = {
     loadError: 'Prompt file could not be loaded.',
     copySuccess: 'Prompt copied to Clipboard successfully',
     copyFailure:
-      'Automatic copy failed. Select the text in the source box at the bottom of the panel and copy it manually (Ctrl+C).',
+      'Automatic copy failed. Click “Markdown source for manual copy” at the bottom of the panel, select the text and copy it manually (Ctrl+C).',
     sourceLabel: 'Markdown source for manual copy',
     promptListLabel: 'Prompt list',
     viewerLabel: 'Prompt view',

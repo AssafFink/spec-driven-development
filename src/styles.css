@@ -16,7 +16,7 @@
   --space-2: 16px;
   --space-3: 24px;
   --space-4: 32px;
-  /* Width of the prompt buttons column; the toast uses the same width */
+  /* Width of the prompt buttons column */
   --list-width: 260px;
 }
 
@@ -33,12 +33,9 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: var(--charcoal);
-  /* Subtle blueprint grid on the page shell only */
-  background-color: var(--paper-white);
-  background-image:
-    linear-gradient(to right, #d1cbc240 1px, transparent 1px),
-    linear-gradient(to bottom, #d1cbc240 1px, transparent 1px);
-  background-size: 24px 24px;
+  /* Blueprint photo that always fills the whole window, at any window size */
+  min-height: 100vh;
+  background: var(--paper-white) url('./assets/background.webp') center / cover no-repeat fixed;
 }
 
 /* Inter leads in English, Heebo in Hebrew (spec/DESIGN.md 2.2) */
@@ -160,11 +157,16 @@ button {
   outline-offset: 2px;
 }
 
-/* Content panel: grows with its content, the page itself scrolls */
+/* Content panel: exactly as tall as the prompt buttons column. "contain: size"
+   keeps its content from affecting the row height, so the column sets the height
+   and long prompts scroll vertically inside the panel instead of the page. */
 .viewer {
   flex: 1;
+  align-self: stretch;
   min-width: 0;
-  min-height: 480px;
+  contain: size;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: var(--space-4);
   background: var(--surface);
   border: 1px solid var(--greige);
@@ -213,8 +215,9 @@ button {
   display: flex;
   align-items: flex-start;
   gap: var(--space-1);
-  /* Same width as the buttons column so it never covers the prompt; grows in height */
-  width: var(--list-width);
+  /* As wide as its message; wraps only if the window is narrower than the message */
+  width: fit-content;
+  max-width: 100%;
   padding: 12px var(--space-2);
   border: 1px solid;
   border-radius: var(--radius);
@@ -233,7 +236,7 @@ button {
 }
 
 .toast.is-success {
-  --toast-duration: 2s;
+  --toast-duration: 3s;
   background: var(--pale-green);
   border-color: var(--technical-green);
 }
@@ -271,16 +274,25 @@ button {
   border-block-start: 1px solid var(--greige);
 }
 
-.source label {
-  display: block;
-  margin-block-end: var(--space-1);
+/* Looks like a link, behaves like a show/hide toggle */
+.source-toggle {
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 2px;
   font-size: 14px;
   font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--technical-green);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  cursor: pointer;
 }
 
 .source textarea {
   display: block;
   width: 100%;
+  margin-block-start: var(--space-2);
   padding: var(--space-2);
   background: var(--paper-white);
   border: 1px solid var(--greige);
@@ -294,6 +306,7 @@ button {
   resize: none;
 }
 
+.source-toggle:focus-visible,
 .source textarea:focus-visible {
   outline: 2px solid var(--charcoal);
   outline-offset: 2px;
