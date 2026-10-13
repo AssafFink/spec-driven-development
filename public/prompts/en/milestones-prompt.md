@@ -17,6 +17,7 @@ Divide the development process into **clear, meaningful, logical, and testable M
 - Arrange the Milestones in a logical development order based on their dependencies, ensuring that each stage builds upon previously implemented capabilities and components.
 - Maintain a reasonable number of meaningful Milestones, and do not create a separate Milestone for every small task.
 - Ensure that at the end of each Milestone, the system remains functional and testable, whenever relevant to that stage.
+- If ARCHITECTURE.md defines separate Development and Production environments, such as two Supabase projects: include the setup of both environments in the first Milestone that uses the Database, as an action the user performs with step-by-step guidance. Every Milestone that changes the database schema must be built and tested against the Development environment only, and its Definition of Done must include applying the Database Migrations to it. Updating the Production environment must be defined as part of the deployment Milestone, or as an explicit condition in the Definition of Done of every Milestone published after it.
 - Do not introduce features, requirements, or capabilities that are not defined in the project documents.
 
 **Development Execution Rules:**

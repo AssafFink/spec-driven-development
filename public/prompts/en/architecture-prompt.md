@@ -66,6 +66,14 @@ Describe the architecture according to the product's needs, including:
 - **Web Application with Frontend and Backend:** When internet deployment is required, prioritize Vercel for deploying the application, including both Frontend and Backend, through GitHub integration and automatic Deployment. Ensure that the Backend environment and product requirements are compatible with Vercel's execution model and limitations.
 - **Web Application with Frontend, Backend, and Database:** Prioritize Vercel for application deployment and Supabase for a relational Database based on PostgreSQL. Prefer GitHub integration that enables automatic application deployment and management of database changes through Database Migrations. Choose a NoSQL Database only when there is a significant technical justification based on the product requirements.
 
+**Development and Production Environments When Supabase Is Selected:**
+- Define **two separate Supabase projects**, meaning two databases: one for **Development** (development and testing) and one for **Production** (the live site and real data).
+- The users are not programmers, so do not rely on running Supabase locally or on installing Docker or similar tools on the user's computer. All development and testing must run against the Development project in the cloud, so that running the system for testing is as simple as possible.
+- Describe in ARCHITECTURE.md which access credentials belong to each environment and where they are stored: the local development environment connects to the Development project only, and the Production credentials are stored only in the Hosting service.
+- Describe a clear procedure for managing Database Migrations across the environments: every database schema change is applied and tested on Development first, and applied to Production only after the user's approval. Define who applies the change to Production and at which stage, so that deploying a new version never precedes its database update.
+- Specify which settings are not carried over by Migrations and must be configured separately in each of the two projects, such as Authentication settings, file storage, and secrets.
+- Check the current Supabase plan limitations relevant to this setup, such as the number of projects allowed and the pausing of inactive projects, and explain their implications to the user in plain language.
+
 **Additional Guidelines:**
 - The preferences above are recommended defaults rather than absolute requirements. If a significant technical need justifies choosing a different solution, select the more suitable option and briefly explain the reason.
 - Do not introduce a Backend, Database, or Cloud services that are not required merely to fit the product into one of the deployment options.
