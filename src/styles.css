@@ -56,11 +56,17 @@ button {
 }
 
 /* Header */
+/* Title at the start edge of the content (right in Hebrew, left in English),
+   language buttons at the end edge */
 .page-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
+  /* Subtle divider under the title and language buttons; the header spans the
+     same width as the columns below, so the line ends exactly at their edges. */
+  padding-block-end: var(--space-2);
+  border-block-end: 1px solid var(--greige);
   margin-block-end: var(--space-3);
 }
 
@@ -138,6 +144,17 @@ button {
 
 .prompt-button:hover {
   background: var(--light-gray);
+}
+
+/* The download link looks like the prompt buttons, set apart below them */
+.download-button {
+  margin-block-start: var(--space-2);
+  color: inherit;
+  text-decoration: none;
+}
+
+.download-button svg {
+  color: var(--technical-green);
 }
 
 .prompt-button.is-selected {

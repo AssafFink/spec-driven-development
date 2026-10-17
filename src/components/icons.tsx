@@ -61,6 +61,16 @@ export function UsFlag() {
   )
 }
 
+export function DownloadIcon() {
+  return (
+    <svg {...svgProps}>
+      <path d="M12 4v11" />
+      <path d="m7 10 5 5 5-5" />
+      <path d="M5 20h14" />
+    </svg>
+  )
+}
+
 export function CheckIcon() {
   return (
     <svg {...svgProps}>

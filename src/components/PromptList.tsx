@@ -1,13 +1,16 @@
 import { PROMPTS, type PromptId } from '../catalog'
-import { FileIcon, ImageIcon } from './icons'
+import { DownloadIcon, FileIcon, ImageIcon } from './icons'
+
+const SKILL_ZIP = 'spec-driven-development.zip'
 
 interface Props {
   label: string
+  downloadLabel: string
   selectedId: PromptId | null
   onSelect: (id: PromptId) => void
 }
 
-export function PromptList({ label, selectedId, onSelect }: Props) {
+export function PromptList({ label, downloadLabel, selectedId, onSelect }: Props) {
   return (
     <nav className="prompt-list" aria-label={label}>
       {PROMPTS.map((prompt) => {
@@ -25,6 +28,15 @@ export function PromptList({ label, selectedId, onSelect }: Props) {
           </button>
         )
       })}
+      {/* Plain file download from public/downloads; it does not select a prompt or copy anything. */}
+      <a
+        className="prompt-button download-button"
+        href={`${import.meta.env.BASE_URL}downloads/${SKILL_ZIP}`}
+        download={SKILL_ZIP}
+      >
+        <DownloadIcon />
+        <span>{downloadLabel}</span>
+      </a>
     </nav>
   )
 }

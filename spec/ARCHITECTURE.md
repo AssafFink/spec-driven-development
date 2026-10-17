@@ -1,4 +1,4 @@
-# ARCHITECTURE — Spec-Driven Development Prompter
+# ARCHITECTURE — Spec-Driven Development
 
 > מסמך ארכיטקטורה טכנית המבוסס על PRD(4).md. תאריך בדיקת מקורות: 10 באוקטובר 2026.
 
@@ -107,6 +107,12 @@ GitHub Repository
 - אם טעינה מוקדמת של קובץ טרם הושלמה בזמן הלחיצה, ניתן להשלים את ההצגה לאחר הגעת הנתונים ולנסות העתקה; **אין להבטיח הצלחת Clipboard** בעקבות פעולה אסינכרונית זו. מוצג משוב מדויק בהתאם לתוצאה, כולל חלופת העתקה ידנית.
 - מניעת Race Conditions: מזהה בקשה או `AbortController` מבטיח שתשובה מאוחרת של בחירה קודמת או של שפה קודמת לא תדרוס את המצב העדכני.
 - תצוגת Markdown משתמשת ב-`react-markdown` עם `remark-gfm`; אין לאפשר HTML גולמי (`rehype-raw`) ואין לשנות URL sanitization ברירת מחדל ללא צורך.
+
+### קובץ להורדה
+
+- קובץ ה-ZIP של ה-Skill נשמר ב-`public/downloads/spec-driven-development.zip`. כנכס `public` הוא מועתק ל-`dist` ללא שינוי שם, ומוגש בכתובת `import.meta.env.BASE_URL` + `downloads/spec-driven-development.zip`.
+- לחצן ההורדה הוא קישור `<a>` עם מאפיין `download`; אין `fetch`, אין עיבוד בצד הלקוח ואין שינוי במצב האפליקציה.
+- עדכון ה-Skill נעשה בהחלפת הקובץ באותו שם ודחיפה ל-`main`; כל החלפה נשמרת כעותק נוסף בהיסטוריית ה-Repository.
 
 ## 6. התנהגות UI ו-Data Flow
 

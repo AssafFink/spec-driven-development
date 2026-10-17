@@ -118,7 +118,12 @@ export default function App() {
         />
       </header>
       <main className="columns">
-        <PromptList label={strings.promptListLabel} selectedId={selectedId} onSelect={handleSelect} />
+        <PromptList
+          label={strings.promptListLabel}
+          downloadLabel={strings.downloadSkill}
+          selectedId={selectedId}
+          onSelect={handleSelect}
+        />
         {/* The key resets the viewer, hiding the Markdown source again for every new prompt. */}
         <PromptViewer
           key={`${language}:${selectedId}`}
