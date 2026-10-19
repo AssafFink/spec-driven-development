@@ -53,7 +53,7 @@
 > Claude ממלא זאת ברגע שהאפליקציה יכולה לרוץ (בדרך כלל בסיום Milestone 1), ומעדכן אם משהו משתנה.
 - **הרצה (dev):** `npm run dev` (נפתח ב-http://localhost:5173)
 - **בנייה (build):** `npm run build`
-- **תצוגה מקדימה של הגרסה הבנויה:** `npm run preview` (נפתח ב-http://localhost:4173/spec-driven-development-prompter/)
+- **תצוגה מקדימה של הגרסה הבנויה:** `npm run preview` (נפתח ב-http://localhost:4173/spec-driven-development/)
 - **בדיקות (test):** אין
 - **פריסה (deploy):** אוטומטית – כל push ל-`main` בונה ומפרסם את האתר דרך GitHub Actions (`.github/workflows/deploy.yml`).
-- **האתר המפורסם:** https://assaffink.github.io/spec-driven-development-prompter/
+- **האתר המפורסם:** https://assaffink.github.io/spec-driven-development/
